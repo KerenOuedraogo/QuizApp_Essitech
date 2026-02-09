@@ -1,0 +1,21 @@
+package com.essitech.quizapp.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Getter @Setter
+public class Answer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String texteReponse;
+    private boolean isCorrect;
+
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    @JsonIgnore
+    private Question question;
+}
